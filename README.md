@@ -1,1 +1,1 @@
-# terraform-lab-1
+# Terraform Lab-1
