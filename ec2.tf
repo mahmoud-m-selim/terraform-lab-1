@@ -16,7 +16,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "ms_bastion" {
   ami                         = data.aws_ami.ubuntu.id
-  instance_type               = "t2.micro"
+  instance_type               = var.instance_type
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.ms_public_1.id
   vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
@@ -41,7 +41,7 @@ resource "aws_key_pair" "generated_key" {
 
 resource "aws_instance" "ms_application" {
   ami                    = data.aws_ami.ubuntu.id
-  instance_type          = "t2.micro"
+  instance_type          = var.instance_type
   subnet_id              = aws_subnet.ms_private_1.id
   vpc_security_group_ids = [aws_security_group.allow_ssh_and_port_3000.id]
   key_name               = aws_key_pair.generated_key.key_name
