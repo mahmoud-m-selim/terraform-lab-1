@@ -18,6 +18,6 @@ variable "cidr_private_2" {
   type = string
 }
 
-# variable "region" {
-#   type = string
-# }
+variable "region" {
+  type = string
+}
