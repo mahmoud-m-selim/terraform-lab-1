@@ -18,7 +18,7 @@ resource "aws_instance" "ms_bastion" {
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = var.instance_type
   associate_public_ip_address = true
-  subnet_id                   = aws_subnet.ms_public_1.id
+  subnet_id                   = module.network.public_subnet_id_1
   vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
   tags = {
     Name = "ms_bastion"
@@ -45,7 +45,7 @@ resource "aws_key_pair" "generated_key" {
 resource "aws_instance" "ms_application" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.instance_type
-  subnet_id              = aws_subnet.ms_private_1.id
+  subnet_id              = module.network.private_subnet_id_1
   vpc_security_group_ids = [aws_security_group.allow_ssh_and_port_3000.id]
   key_name               = aws_key_pair.generated_key.key_name
   tags = {
