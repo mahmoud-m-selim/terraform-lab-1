@@ -17,3 +17,7 @@ variable "cidr_private_1" {
 variable "cidr_private_2" {
   type = string
 }
+
+variable "region" {
+  type = string
+}
