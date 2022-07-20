@@ -26,7 +26,7 @@ resource "aws_security_group" "allow_ssh" {
 resource "aws_security_group" "allow_ssh_and_port_3000" {
   name        = "allow_ssh_and_port_3000"
   description = "Allow ssh and port 3000 from vpc cidr only"
-  vpc_id      = aws_vpc.ms_vpc.id
+  vpc_id      = module.network.vpc_id
 
   ingress {
     description = "ssh"
