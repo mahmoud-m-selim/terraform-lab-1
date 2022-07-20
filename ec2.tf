@@ -23,9 +23,9 @@ resource "aws_instance" "ms_bastion" {
   tags = {
     Name = "ms_bastion"
   }
-  # provisioner "local_exec" {
-  #   command = "echo ${aws_instance.ms_bastion.public_ip}"
-  # }
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.ms_bastion.public_ip}"
+  }
 }
 
 resource "tls_private_key" "ms_key" {
